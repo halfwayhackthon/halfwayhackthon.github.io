@@ -1,41 +1,42 @@
-// function showResponse(response){
-// 	var responseString = JSON.stringify(response, '',2);
-// 	document.getElementById('response').innerHTML += responseString;
-// }
-
-// function onClientLoad(){
-// 	gapi.client.load('youtube','v3', onYouTubeApiLoad);	
-// }
-
-// function onYouTubeApiLoad(){
-// 	gapi.client.setApiKey('AIzaSyDgCqI74Acb4UY7GPhZ3-Sz8jal_F2OwKE');
-// 	search();
-// }
-
-// function search(){
+// $('form').on('submit', function(e){
+// 	e.preventDefault();
 // 	var request = gapi.client.youtube.search.list({
-//         part: 'snippet',
-//         q: 'japanese shabu'
-//     });
-//     request.execute(onSearchResponse);
-// }
+// 		part : ' snippet',
+// 		type: 'video',
+// 		q: encodeURIComponent($('#search').val()).replace(/%20/g, '+'),
+// 		maxResults: 1,
+// 		order: 'viewCount',
+// 		publishedAfter: '2015-01-01T00:00:00Z'
+// 	});
+// 	request.execute(function(response){
+// 		//console.log(response);
+// 		var results = response.result;
+// 		$.each(results.items, function(index,item){
+// 			$('#results').append(item.id.videoId+' '+item.snippet.title+'<br>');
+// 		})
+// 	})
+// })
 
-// function onSearchResponse(response) {
-//     showResponse(response);
-// }
-
-$('form').on('submit', function(e){
+$('#veggie').on('click', function(e){
 	e.preventDefault();
+	$('.main').empty();
 	var request = gapi.client.youtube.search.list({
 		part : ' snippet',
 		type: 'video',
-		q: encodeURIComponent($('#search').val()).replace(/%20/g, '+'),
+		q: encodeURIComponent('vegetarian recipe').replace(/%20/g, '+'),
 		maxResults: 3,
 		order: 'viewCount',
 		publishedAfter: '2015-01-01T00:00:00Z'
 	});
 	request.execute(function(response){
-		console.log(response);
+		//console.log(response);
+		var results = response.result;
+		$.each(results.items, function(index,item){
+			$('.main').append("<div class = 'row text-center'><div class = 'col-md-12'><h3 class = 'recipeName'></h3><iframe class = 'recipeLink'></iframe></div></div>");
+			$('.recipeName').text('Recipe: ' + item.snippet.title);
+			$('.recipeLink').attr('src', item.id.videoId);
+			//append(item.id.videoId+' '+item.snippet.title+'<br>');
+		})
 	})
 })
 
