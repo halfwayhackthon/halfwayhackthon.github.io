@@ -7,6 +7,9 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 
+
+  <script type="text/javascript" src="http://oauth.googlecode.com/svn/code/javascript/oauth.js"></script>
+  <script type="text/javascript" src="http://oauth.googlecode.com/svn/code/javascript/sha1.js"></script>
   <meta charset="UTF-8">
   <title>Halfway Hackathon</title>
 
@@ -49,7 +52,22 @@
   </div>
 </div>
 
+<div class = 'row'>
+  <div class='col-md-6 col-md-offset-3'>
+    <form action='#'>
+      <p><input type='text' id='search' placeholder='type something...' class='form-control'/></p>
+      <p><input type='submit' value='search' class='form-control btn btn-primary w100'></p>
+    </form>
+    <div id='results'></div>
+  </div>
 
+</div>
+
+<div id='response'></div>
 <script src='JS/logic.js'></script>
+
+<script src='JS/api.js'></script>
+<script src ='https://apis.google.com/js/client.js?onload=init'></script>
+<!-- <script src='JS/test.js'></script> -->
 </body>
 </html>

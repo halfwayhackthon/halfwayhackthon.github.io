@@ -3,19 +3,16 @@ var vegetarians = [
 		//index: 1,
 		name: 'Veggie Meatballs',
 		link: 'https://www.youtube.com/embed/kJrQvTzQpog',
-		recipe: ' ',
 	},
 	{
 		//index: 2,
 		name: 'Veggie Burgers',
 		link: 'https://www.youtube.com/embed/2b_LTaBbZw0',
-		recipe: ' ',
 	},
 	{
 		//index: 3,
 		name: 'Veggie Spaghetti',
 		link: 'https://www.youtube.com/embed/M6ol_t88T9Q',
-		recipe: ' ',
 	}
 ]
 
@@ -25,19 +22,16 @@ var meats = [
 		//index: 1,
 		name: 'Chicken Fettuccine',
 		link: 'https://www.youtube.com/embed/5p7avk-9IwE',
-		recipe: ' ',
 	},
 	{
 		//index: 2,
 		name: 'Beef Stroganoff',
 		link: 'https://www.youtube.com/embed/2J482y8WVdo',
-		recipe: ' ',
 	},
 	{
 		//index: 3,
 		name: 'Fish and Chips',
 		link: 'https://www.youtube.com/embed/I8ckIq2-j0k',
-		recipe: ' ',
 	}
 ]
 
