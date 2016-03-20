@@ -1,9 +1,30 @@
-$('form').on('submit', function(e){
+// $('form').on('submit', function(e){
+// 	e.preventDefault();
+// 	var request = gapi.client.youtube.search.list({
+// 		part : ' snippet',
+// 		type: 'video',
+// 		q: encodeURIComponent($('#search').val()).replace(/%20/g, '+'),
+// 		maxResults: 1,
+// 		order: 'viewCount',
+// 		publishedAfter: '2015-01-01T00:00:00Z'
+// 	});
+// 	request.execute(function(response){
+// 		//console.log(response);
+// 		var results = response.result;
+// 		$.each(results.items, function(index,item){	
+// 			$('#results').append(item.id.videoId+' '+item.snippet.title+'<br>');
+// 		})
+// 	})
+// })
+
+
+$('#veggie').on('click', function(e){
 	e.preventDefault();
+	$('.main').empty();
 	var request = gapi.client.youtube.search.list({
 		part : ' snippet',
 		type: 'video',
-		q: encodeURIComponent($('#search').val()).replace(/%20/g, '+'),
+		q: encodeURIComponent('vegetarian recipe').replace(/%20/g, '+'),
 		maxResults: 1,
 		order: 'viewCount',
 		publishedAfter: '2015-01-01T00:00:00Z'
@@ -11,12 +32,15 @@ $('form').on('submit', function(e){
 	request.execute(function(response){
 		//console.log(response);
 		var results = response.result;
-		$.each(results.items, function(index,item){
-			$('#results').append(item.id.videoId+' '+item.snippet.title+'<br>');
-		})
+
+		$('.main').append("<div class = 'row text-center'><div class = 'col-md-12'><h3 class = 'recipeName'></h3><iframe class = 'recipeLink'></iframe></div></div>");
+		$('.recipeName').text('Recipe: ' + results.items[0].snippet.title);
+		$('.recipeLink').attr('src', 'https://www.youtube.com/embed/'+ results.items[0].id.videoId);
+		// $.each(results.items, function(index,item){	
+		// 	$('#results').append(item.id.videoId+' '+item.snippet.title+'<br>');
+		// })
 	})
 })
-
 
 
 function init(){

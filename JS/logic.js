@@ -58,21 +58,21 @@ function showVeggie(){
 function showMain(){
 
 }
-//$('#meat').on('click', showMeat());
-//$('#veggie').on('click', showVeggie());
+$('#meat').on('click', showMeat());
+$('#veggie').on('click', showVeggie());
 
-// $('button').on('click', function(){
-// 	//event.preventDefault();
-// 	var id = this.id;
-// 	if(id === 'veggie'){
-// 		//console.log('veggie');
-// 		$('.main').empty();
-// 		showVeggie();
-// 	}else if(id === 'meat'){
-// 		//console.log('meat');
-// 		$('.main').empty();
-// 		showMeat();
-// 	}
-// }); 
+$('button').on('click', function(){
+	//event.preventDefault();
+	var id = this.id;
+	if(id === 'veggie'){
+		//console.log('veggie');
+		$('.main').empty();
+		showVeggie();
+	}else if(id === 'meat'){
+		//console.log('meat');
+		$('.main').empty();
+		showMeat();
+	}
+}); 
 
 
