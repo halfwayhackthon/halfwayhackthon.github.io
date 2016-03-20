@@ -28,7 +28,7 @@ $('#veggie').on('click', function(e){
 		part : ' snippet',
 		type: 'video',
 		q: encodeURIComponent('vegetarian recipe').replace(/%20/g, '+'),
-		maxResults: 1,
+		maxResults: 10,
 		order: 'viewCount',
 		publishedAfter: '2015-01-01T00:00:00Z'
 	});
@@ -37,9 +37,9 @@ $('#veggie').on('click', function(e){
 		var results = response.result;
 		var index = randomIndex();
 		console.log(index);
-		// $('.main').append("<div class = 'row text-center'><div class = 'col-md-12'><h3 class = 'recipeName'></h3><iframe class = 'recipeLink'></iframe></div></div>");
-		// $('.recipeName').text('Recipe: ' + results.items[index].snippet.title);
-		// $('.recipeLink').attr('src', 'https://www.youtube.com/embed/'+ results.items[index].id.videoId);	
+		$('.main').append("<div class = 'row text-center'><div class = 'col-md-12'><h3 class = 'recipeName'></h3><iframe class = 'recipeLink'></iframe></div></div>");
+		$('.recipeName').text('Recipe: ' + results.items[index].snippet.title);
+		$('.recipeLink').attr('src', 'https://www.youtube.com/embed/'+ results.items[index].id.videoId);	
 	})
 })
 
@@ -49,7 +49,7 @@ $('#meat').on('click', function(e){
 	var request = gapi.client.youtube.search.list({
 		part : ' snippet',
 		type: 'video',
-		q: encodeURIComponent('meaty dinner recipe').replace(/%20/g, '+'),
+		q: encodeURIComponent('dinner recipe').replace(/%20/g, '+'),
 		maxResults: 1,
 		order: 'viewCount',
 		publishedAfter: '2015-01-01T00:00:00Z'
@@ -57,10 +57,10 @@ $('#meat').on('click', function(e){
 	request.execute(function(response){
 		//console.log(response);
 		var results = response.result;
-		//var index = randomIndex();
+		var index = randomIndex();
 		$('.main').append("<div class = 'row text-center'><div class = 'col-md-12'><h3 class = 'recipeName'></h3><iframe class = 'recipeLink'></iframe></div></div>");
-		$('.recipeName').text('Recipe: ' + results.items[0].snippet.title);
-		$('.recipeLink').attr('src', 'https://www.youtube.com/embed/'+ results.items[0].id.videoId);	
+		$('.recipeName').text('Recipe: ' + results.items[index].snippet.title);
+		$('.recipeLink').attr('src', 'https://www.youtube.com/embed/'+ results.items[index].id.videoId);	
 	})
 })
 
