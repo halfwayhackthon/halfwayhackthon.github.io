@@ -50,7 +50,7 @@ $('#meat').on('click', function(e){
 		part : ' snippet',
 		type: 'video',
 		q: encodeURIComponent('dinner recipe').replace(/%20/g, '+'),
-		maxResults: 1,
+		maxResults: 10,
 		order: 'viewCount',
 		publishedAfter: '2015-01-01T00:00:00Z'
 	});
