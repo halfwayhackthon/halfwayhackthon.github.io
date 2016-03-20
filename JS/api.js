@@ -33,7 +33,7 @@ $('#meat').on('click', function(e){
 	var request = gapi.client.youtube.search.list({
 		part : ' snippet',
 		type: 'video',
-		q: encodeURIComponent('meat recipes cooking').replace(/%20/g, '+'),
+		q: encodeURIComponent('meat recipe').replace(/%20/g, '+'),
 		maxResults: 20,
 		order: 'viewCount',
 		publishedAfter: '2015-01-01T00:00:00Z'
