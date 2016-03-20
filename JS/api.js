@@ -4,15 +4,8 @@ function randomIndex(){
 }
 
 //render 'back' button on the DOM:
-function backButton(){
-	var $back = $('<button>').attr({
-		id: 'back',
-		type: 'button',
-		class: "btn btn-default main"
-	});
-	$back.text('Go Back');
-	$('.container').append($back);
-}
+
+
 
 //Click Handler for Salad button
 $('#salad').on('click', function(e){
@@ -35,7 +28,6 @@ $('#salad').on('click', function(e){
 		$('.recipeName').text('Recipe: ' + results.items[index].snippet.title);
 		$('.recipeLink').attr('src', 'https://www.youtube.com/embed/'+ results.items[index].id.videoId);	
 	})
-	backButton()
 })
 
 //Click Handler for soup Button
