@@ -36,9 +36,10 @@ $('#veggie').on('click', function(e){
 		//console.log(response);
 		var results = response.result;
 		var index = randomIndex();
-		$('.main').append("<div class = 'row text-center'><div class = 'col-md-12'><h3 class = 'recipeName'></h3><iframe class = 'recipeLink'></iframe></div></div>");
-		$('.recipeName').text('Recipe: ' + results.items[index].snippet.title);
-		$('.recipeLink').attr('src', 'https://www.youtube.com/embed/'+ results.items[index].id.videoId);	
+		console.log(index);
+		// $('.main').append("<div class = 'row text-center'><div class = 'col-md-12'><h3 class = 'recipeName'></h3><iframe class = 'recipeLink'></iframe></div></div>");
+		// $('.recipeName').text('Recipe: ' + results.items[index].snippet.title);
+		// $('.recipeLink').attr('src', 'https://www.youtube.com/embed/'+ results.items[index].id.videoId);	
 	})
 })
 
@@ -48,7 +49,7 @@ $('#meat').on('click', function(e){
 	var request = gapi.client.youtube.search.list({
 		part : ' snippet',
 		type: 'video',
-		q: encodeURIComponent('meat dinner recipe').replace(/%20/g, '+'),
+		q: encodeURIComponent('meaty dinner recipe').replace(/%20/g, '+'),
 		maxResults: 1,
 		order: 'viewCount',
 		publishedAfter: '2015-01-01T00:00:00Z'
