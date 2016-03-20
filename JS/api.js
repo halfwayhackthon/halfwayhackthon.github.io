@@ -16,7 +16,9 @@
 // 		})
 // 	})
 // })
-
+function randomIndex(){
+	return Math.floor(Math.random()*10);
+}
 
 $('#veggie').on('click', function(e){
 	e.preventDefault();
@@ -30,12 +32,11 @@ $('#veggie').on('click', function(e){
 		publishedAfter: '2015-01-01T00:00:00Z'
 	});
 	request.execute(function(response){
-		//console.log(response);
 		var results = response.result;
-
+		var index = randomIndex();
 		$('.main').append("<div class = 'row text-center'><div class = 'col-md-12'><h3 class = 'recipeName'></h3><iframe class = 'recipeLink'></iframe></div></div>");
-		$('.recipeName').text('Recipe: ' + results.items[0].snippet.title);
-		$('.recipeLink').attr('src', 'https://www.youtube.com/embed/'+ results.items[0].id.videoId);
+		$('.recipeName').text('Recipe: ' + results.items[index].snippet.title);
+		$('.recipeLink').attr('src', 'https://www.youtube.com/embed/'+ results.items[index].id.videoId);
 		// $.each(results.items, function(index,item){	
 		// 	$('#results').append(item.id.videoId+' '+item.snippet.title+'<br>');
 		// })
