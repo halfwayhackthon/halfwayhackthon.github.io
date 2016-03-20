@@ -34,7 +34,7 @@ $('#veggie').on('click', function(e){
 		$.each(results.items, function(index,item){
 			$('.main').append("<div class = 'row text-center'><div class = 'col-md-12'><h3 class = 'recipeName'></h3><iframe class = 'recipeLink'></iframe></div></div>");
 			$('.recipeName').text('Recipe: ' + item.snippet.title);
-			$('.recipeLink').attr('src', item.id.videoId);
+			$('.recipeLink').attr('src', 'https://www.youtube.com/embed/'+item.id.videoId);
 			//append(item.id.videoId+' '+item.snippet.title+'<br>');
 		})
 	})
