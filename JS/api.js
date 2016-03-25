@@ -3,6 +3,36 @@ function randomIndex(){
 	return Math.floor(Math.random()*20+1);
 }
 
+
+$('#test').on('click', function(e){
+	e.preventDefault();
+	$('.main').empty();
+	// var element = document.getElementById('main');
+	// element.innerHTML = "<div class = 'row text-center'><div class = 'col-md-12'><h3 class = 'recipeName'></h3><iframe class = 'recipeLink'></iframe></div></div>";
+	var request = gapi.client.youtube.search.list({
+		part : ' snippet',
+		type: 'video',
+		q: encodeURIComponent('BigBang Music Video').replace(/%20/g, '+'),
+		maxResults: 20,
+		order: 'viewCount',
+		publishedAfter: '2015-01-01T00:00:00Z'
+	});
+
+	request.execute(function(response){
+
+		var result = response.result.items;
+		var index = randomIndex();
+	
+		var element = document.getElementById('main');
+		element.innerHTML = "<div class = 'row text-center'><div class = 'col-md-12'><h3 class = 'recipeName'></h3><iframe class = 'recipeLink'></iframe></div></div>";
+		element.getElementsByTagName('H3').innerHTML = item[index].snippet.title);
+		element.getElementsByTagName('iframe').src =  'https://www.youtube.com/embed/'+ results.items[index].id.videoId;
+		
+	})
+})
+
+
+
 //render 'back' button on the DOM:
 //Click Handler for Salad button
 $('#salad').on('click', function(e){
