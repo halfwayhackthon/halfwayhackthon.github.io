@@ -7,6 +7,18 @@ function randomIndex(){
 $('#test').on('click', function(e){
 	e.preventDefault();
 	$('.main').empty();
+	// var element = document.getElementById('main');
+	// element.innerHTML = "<div class = 'row text-center'><div class = 'col-md-12' id='contents'></div></div>";
+	// var titleTag  = document.createElement('h3');
+	// var titleName = document.createTextNode('Testing');
+	// titleTag.appendChild(titleName);
+
+	// var videoTag = document.createElement('iframe');
+	// videoTag.setAttribute("src","https://www.youtube.com/embed/UwuAPyOImoI");
+
+	// var content = document.getElementById('contents');
+	// content.appendChild(titleTag);
+	// content.appendChild(videoTag);
 
 	var request = gapi.client.youtube.search.list({
 		part : ' snippet',
@@ -23,9 +35,17 @@ $('#test').on('click', function(e){
 		var index = randomIndex();
 	
 		var element = document.getElementById('main');
-		element.innerHTML = "<div class = 'row text-center'><div class = 'col-md-12'><h3 class = 'recipeName'></h3><iframe class = 'recipeLink'></iframe></div></div>";
-		element.getElementsByTagName('h3').textContent = result[index].snippet.title;
-		element.getElementsByTagName('iframe').src =  'https://www.youtube.com/embed/'+ result[index].id.videoId;
+		element.innerHTML = "<div class = 'row text-center'><div class = 'col-md-12' id='contents'></div></div>";
+		var titleTag  = document.createElement('h3');
+		var titleName = document.createTextNode(result[index].snippet.title);
+		titleTag.appendChild(titleName);
+
+		var videoTag = document.createElement('iframe');
+		videoTag.setAttribute("src", "https://www.youtube.com/embed/"+result[index].id.videoId);
+
+		var content = document.getElementById('contents');
+		content.appendChild(titleTag);
+		content.appendChild(videoTag);
 		
 	})
 })
