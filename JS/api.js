@@ -17,7 +17,7 @@ $('#salad').on('click', function(e){
 		publishedAfter: '2015-01-01T00:00:00Z'
 	});
 	request.execute(function(response){
-		//console.log(response);
+		console.log(response);
 		var results = response.result;
 		var index = randomIndex();
 		
