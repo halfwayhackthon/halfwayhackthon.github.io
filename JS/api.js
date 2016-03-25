@@ -7,8 +7,7 @@ function randomIndex(){
 $('#test').on('click', function(e){
 	e.preventDefault();
 	$('.main').empty();
-	// var element = document.getElementById('main');
-	// element.innerHTML = "<div class = 'row text-center'><div class = 'col-md-12'><h3 class = 'recipeName'></h3><iframe class = 'recipeLink'></iframe></div></div>";
+	
 	var request = gapi.client.youtube.search.list({
 		part : ' snippet',
 		type: 'video',
@@ -38,6 +37,7 @@ $('#test').on('click', function(e){
 $('#salad').on('click', function(e){
 	e.preventDefault();
 	$('.main').empty();
+
 	var request = gapi.client.youtube.search.list({
 		part : ' snippet',
 		type: 'video',
