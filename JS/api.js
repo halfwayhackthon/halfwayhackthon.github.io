@@ -25,7 +25,7 @@ $('#test').on('click', function(e){
 	
 		var element = document.getElementById('main');
 		element.innerHTML = "<div class = 'row text-center'><div class = 'col-md-12'><h3 class = 'recipeName'></h3><iframe class = 'recipeLink'></iframe></div></div>";
-		element.getElementsByTagName('H3').innerHTML = item[index].snippet.title);
+		element.getElementsByTagName('H3').innerHTML = item[index].snippet.title;
 		element.getElementsByTagName('iframe').src =  'https://www.youtube.com/embed/'+ results.items[index].id.videoId;
 		
 	})
