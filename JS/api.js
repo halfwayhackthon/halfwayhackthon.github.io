@@ -116,7 +116,6 @@ document.getElementById('steak').addEventListener('click', function(e){
 	request.execute(function(response){
 		var apiResponse = response.result.items;
 		var titleAndSourceArray = sortedResponse(apiResponse);
-		console.log(titleAndSourceArray.length);
 		renderDOM(titleAndSourceArray);	
 		backButton();
 	})
@@ -137,7 +136,6 @@ document.getElementById('chicken').addEventListener('click', function(e){
 	request.execute(function(response){
 		var apiResponse = response.result.items;
 		var titleAndSourceArray = sortedResponse(apiResponse);
-		console.log(titleAndSourceArray.length);
 		renderDOM(titleAndSourceArray);	
 		backButton();	
 	})
@@ -158,7 +156,6 @@ document.getElementById('seafood').addEventListener('click', function(e){
 	request.execute(function(response){
 		var apiResponse = response.result.items;
 		var titleAndSourceArray = sortedResponse(apiResponse);
-		console.log(titleAndSourceArray.length);
 		renderDOM(titleAndSourceArray);	
 		backButton();	
 	})
@@ -179,7 +176,6 @@ document.getElementById('dessert').addEventListener('click', function(e){
 	request.execute(function(response){
 		var apiResponse = response.result.items;
 		var titleAndSourceArray = sortedResponse(apiResponse);
-		console.log(titleAndSourceArray.length);
 		renderDOM(titleAndSourceArray);	
 		backButton();	
 	})
