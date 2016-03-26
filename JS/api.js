@@ -3,23 +3,18 @@ function randomIndex(){
 	return Math.floor(Math.random()*20+1);
 }
 
+function newElements(arr){
+	var results = [];
+	arr.forEach(function(item){
+		results.push({title: item.snippet.title, src: item.id.videoId});
+	})
+
+	return results;
+}
 
 $('#test').on('click', function(e){
 	e.preventDefault();
 	$('.main').empty();
-	// var element = document.getElementById('main');
-	// element.innerHTML = "<div class = 'row text-center'><div class = 'col-md-12' id='contents'></div></div>";
-	// var titleTag  = document.createElement('h3');
-	// var titleName = document.createTextNode('Testing');
-	// titleTag.appendChild(titleName);
-
-	// var videoTag = document.createElement('iframe');
-	// videoTag.setAttribute("src","https://www.youtube.com/embed/UwuAPyOImoI");
-
-	// var content = document.getElementById('contents');
-	// content.appendChild(titleTag);
-	// content.appendChild(videoTag);
-
 	var request = gapi.client.youtube.search.list({
 		part : ' snippet',
 		type: 'video',
@@ -30,25 +25,28 @@ $('#test').on('click', function(e){
 	});
 
 	request.execute(function(response){
-
-		var result = response.result.items;
-		var index = randomIndex();
+		var apiResponse = response.result.items;
+		var titleAndSource = newElements(apiResponse);
+		console.log(titleAndSource.length);
+		// var result = response.result.items;
+		// var index = randomIndex();
 	
-		var element = document.getElementById('main');
-		element.innerHTML = "<div class = 'row text-center'><div class = 'col-md-12' id='contents'></div></div>";
-		var titleTag  = document.createElement('h3');
-		var titleName = document.createTextNode(result[index].snippet.title);
-		titleTag.appendChild(titleName);
+		// var element = document.getElementById('main');
+		// element.innerHTML = "<div class = 'row text-center'><div class = 'col-md-12' id='contents'></div></div>";
+		// var titleTag  = document.createElement('h3');
+		// var titleName = document.createTextNode(result[index].snippet.title);
+		// titleTag.appendChild(titleName);
 
-		var videoTag = document.createElement('iframe');
-		videoTag.setAttribute("src", "https://www.youtube.com/embed/"+result[index].id.videoId);
+		// var videoTag = document.createElement('iframe');
+		// videoTag.setAttribute("src", "https://www.youtube.com/embed/"+result[index].id.videoId);
 
-		var content = document.getElementById('contents');
-		content.appendChild(titleTag);
-		content.appendChild(videoTag);
+		// var content = document.getElementById('contents');
+		// content.appendChild(titleTag);
+		// content.appendChild(videoTag);
 		
 	})
 })
+
 
 
 
