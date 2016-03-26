@@ -31,6 +31,13 @@ function renderDOM(arr){
 	content.appendChild(videoTag);
 }
 
+
+function backButton(){
+	var back = document.getElementById('main');
+	back.innerHTML = "<div class = 'row text-center'><a class='btn btn-default' role = 'button' href='index.html'>BACK</a></div>";
+	document.getElementById('contents').appendChild(back);
+}
+
 document.getElementById('test').addEventListener('click',function(e){
 	e.preventDefault();
 	$('.main').empty();
@@ -46,8 +53,8 @@ document.getElementById('test').addEventListener('click',function(e){
 	request.execute(function(response){
 		var apiResponse = response.result.items;
 		var titleAndSourceArray = sortedResponse(apiResponse);
-		console.log(titleAndSourceArray.length);
 		renderDOM(titleAndSourceArray);
+		backButton();
 	})
 })
 
