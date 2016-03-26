@@ -20,7 +20,7 @@ function renderDOM(arr){
 	titleTag.appendChild(titleName);
 
 	var videoTag = document.createElement('iframe');
-	videoTag.setAttribute("src", arr[index].src);
+	videoTag.setAttribute("src", "https://www.youtube.com/embed/"+arr[index].src);
 
 	var content = document.getElementById('contents');
 	content.appendChild(titleTag);
