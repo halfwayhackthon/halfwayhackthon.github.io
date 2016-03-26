@@ -1,7 +1,7 @@
 //Helper Function: 
 //generate random index 
 function randomIndex(){
-	return Math.floor(Math.random()*20);
+	return Math.floor(Math.random()*30);
 }
 
 //Helper Function: 
@@ -31,31 +31,32 @@ function renderDOM(arr){
 	content.appendChild(videoTag);
 }
 
-
+//Helper Function:
+// inserts a back button that takes user back to main page.
 function backButton(){
 	var back = document.getElementById('contents');
 	back.insertAdjacentHTML('beforeend', "<div class ='row text-center'><a class='btn btn-default' role = 'button' href='index.html'>BACK</a><div>");
 }
 
-document.getElementById('test').addEventListener('click',function(e){
-	e.preventDefault();
-	$('.main').empty();
-	var request = gapi.client.youtube.search.list({
-		part : ' snippet',
-		type: 'video',
-		q: encodeURIComponent('BigBang Music Video').replace(/%20/g, '+'),
-		maxResults: 20,
-		order: 'viewCount',
-		publishedAfter: '2015-01-01T00:00:00Z'
-	});
+// document.getElementById('test').addEventListener('click',function(e){
+// 	e.preventDefault();
+// 	$('.main').empty();
+// 	var request = gapi.client.youtube.search.list({
+// 		part : ' snippet',
+// 		type: 'video',
+// 		q: encodeURIComponent('BigBang Music Video').replace(/%20/g, '+'),
+// 		maxResults: 20,
+// 		order: 'viewCount',
+// 		publishedAfter: '2015-01-01T00:00:00Z'
+// 	});
 
-	request.execute(function(response){
-		var apiResponse = response.result.items;
-		var titleAndSourceArray = sortedResponse(apiResponse);
-		renderDOM(titleAndSourceArray);
-		backButton();
-	})
-})
+// 	request.execute(function(response){
+// 		var apiResponse = response.result.items;
+// 		var titleAndSourceArray = sortedResponse(apiResponse);
+// 		renderDOM(titleAndSourceArray);
+// 		backButton();
+// 	})
+// })
 
 //Click Handler for Salad button
 document.getElementById('salad').addEventListener('click', function(e){
@@ -66,7 +67,7 @@ document.getElementById('salad').addEventListener('click', function(e){
 		part : ' snippet',
 		type: 'video',
 		q: encodeURIComponent('salad recipe').replace(/%20/g, '+'),
-		maxResults: 20,
+		maxResults: 30,
 		order: 'viewCount',
 		publishedAfter: '2015-01-01T00:00:00Z'
 	});
@@ -75,6 +76,7 @@ document.getElementById('salad').addEventListener('click', function(e){
 		var titleAndSourceArray = sortedResponse(apiResponse);
 		console.log(titleAndSourceArray.length);
 		renderDOM(titleAndSourceArray);	
+		backButton();
 	})
 })
 
@@ -86,7 +88,7 @@ document.getElementById('soup').addEventListener('click', function(e){
 		part : ' snippet',
 		type: 'video',
 		q: encodeURIComponent('soup recipe').replace(/%20/g, '+'),
-		maxResults: 20,
+		maxResults: 30,
 		order: 'viewCount',
 		publishedAfter: '2015-01-01T00:00:00Z'
 	});
@@ -94,7 +96,8 @@ document.getElementById('soup').addEventListener('click', function(e){
 		var apiResponse = response.result.items;
 		var titleAndSourceArray = sortedResponse(apiResponse);
 		console.log(titleAndSourceArray.length);
-		renderDOM(titleAndSourceArray);		
+		renderDOM(titleAndSourceArray);	
+		backButton();	
 	})
 })
 
@@ -106,7 +109,7 @@ document.getElementById('steak').addEventListener('click', function(e){
 		part : ' snippet',
 		type: 'video',
 		q: encodeURIComponent('steak recipe').replace(/%20/g, '+'),
-		maxResults: 20,
+		maxResults: 30,
 		order: 'viewCount',
 		publishedAfter: '2015-01-01T00:00:00Z'
 	});
@@ -115,6 +118,7 @@ document.getElementById('steak').addEventListener('click', function(e){
 		var titleAndSourceArray = sortedResponse(apiResponse);
 		console.log(titleAndSourceArray.length);
 		renderDOM(titleAndSourceArray);	
+		backButton();
 	})
 })
 
@@ -126,7 +130,7 @@ document.getElementById('chicken').addEventListener('click', function(e){
 		part : ' snippet',
 		type: 'video',
 		q: encodeURIComponent('chicken recipe').replace(/%20/g, '+'),
-		maxResults: 20,
+		maxResults: 30,
 		order: 'viewCount',
 		publishedAfter: '2015-01-01T00:00:00Z'
 	});
@@ -134,7 +138,8 @@ document.getElementById('chicken').addEventListener('click', function(e){
 		var apiResponse = response.result.items;
 		var titleAndSourceArray = sortedResponse(apiResponse);
 		console.log(titleAndSourceArray.length);
-		renderDOM(titleAndSourceArray);		
+		renderDOM(titleAndSourceArray);	
+		backButton();	
 	})
 })
 
@@ -146,7 +151,7 @@ document.getElementById('seafood').addEventListener('click', function(e){
 		part : ' snippet',
 		type: 'video',
 		q: encodeURIComponent('seafood recipe').replace(/%20/g, '+'),
-		maxResults: 20,
+		maxResults: 30,
 		order: 'viewCount',
 		publishedAfter: '2015-01-01T00:00:00Z'
 	});
@@ -154,7 +159,8 @@ document.getElementById('seafood').addEventListener('click', function(e){
 		var apiResponse = response.result.items;
 		var titleAndSourceArray = sortedResponse(apiResponse);
 		console.log(titleAndSourceArray.length);
-		renderDOM(titleAndSourceArray);		
+		renderDOM(titleAndSourceArray);	
+		backButton();	
 	})
 })
 
@@ -166,7 +172,7 @@ document.getElementById('dessert').addEventListener('click', function(e){
 		part : ' snippet',
 		type: 'video',
 		q: encodeURIComponent('easy dessert recipe').replace(/%20/g, '+'),
-		maxResults: 20,
+		maxResults: 30,
 		order: 'viewCount',
 		publishedAfter: '2015-01-01T00:00:00Z'
 	});
@@ -174,7 +180,8 @@ document.getElementById('dessert').addEventListener('click', function(e){
 		var apiResponse = response.result.items;
 		var titleAndSourceArray = sortedResponse(apiResponse);
 		console.log(titleAndSourceArray.length);
-		renderDOM(titleAndSourceArray);		
+		renderDOM(titleAndSourceArray);	
+		backButton();	
 	})
 })
 
