@@ -34,7 +34,7 @@ function renderDOM(arr){
 
 function backButton(){
 	var back = document.getElementById('contents');
-	back.insertAdjacentHTML('beforeend', "<a class='btn btn-default' role = 'button' href='index.html'>BACK</a>");
+	back.insertAdjacentHTML('beforeend', "<div class ='row text-center'><a class='btn btn-default' role = 'button' href='index.html'>BACK</a><div>");
 }
 
 document.getElementById('test').addEventListener('click',function(e){
