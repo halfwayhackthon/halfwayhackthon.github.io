@@ -27,7 +27,7 @@ function renderDOM(arr){
 	content.appendChild(videoTag);
 }
 
-$('#test').on('click', function(e){
+document.getElementById('test').addEventListener('click',function(e){
 	e.preventDefault();
 	$('.main').empty();
 	var request = gapi.client.youtube.search.list({
@@ -44,24 +44,28 @@ $('#test').on('click', function(e){
 		var titleAndSourceArray = sortedResponse(apiResponse);
 		console.log(titleAndSourceArray.length);
 		renderDOM(titleAndSourceArray);
-		// var result = response.result.items;
-		// var index = randomIndex();
-	
-		// var element = document.getElementById('main');
-		// element.innerHTML = "<div class = 'row text-center'><div class = 'col-md-12' id='contents'></div></div>";
-		// var titleTag  = document.createElement('h3');
-		// var titleName = document.createTextNode(result[index].snippet.title);
-		// titleTag.appendChild(titleName);
-
-		// var videoTag = document.createElement('iframe');
-		// videoTag.setAttribute("src", "https://www.youtube.com/embed/"+result[index].id.videoId);
-
-		// var content = document.getElementById('contents');
-		// content.appendChild(titleTag);
-		// content.appendChild(videoTag);
-		
 	})
 })
+
+// $('#test').on('click', function(e){
+// 	e.preventDefault();
+// 	$('.main').empty();
+// 	var request = gapi.client.youtube.search.list({
+// 		part : ' snippet',
+// 		type: 'video',
+// 		q: encodeURIComponent('BigBang Music Video').replace(/%20/g, '+'),
+// 		maxResults: 20,
+// 		order: 'viewCount',
+// 		publishedAfter: '2015-01-01T00:00:00Z'
+// 	});
+
+// 	request.execute(function(response){
+// 		var apiResponse = response.result.items;
+// 		var titleAndSourceArray = sortedResponse(apiResponse);
+// 		console.log(titleAndSourceArray.length);
+// 		renderDOM(titleAndSourceArray);
+// 	})
+// })
 
 
 
