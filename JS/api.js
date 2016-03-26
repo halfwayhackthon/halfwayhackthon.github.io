@@ -1,15 +1,30 @@
 //Helper Function: generate random index 
 function randomIndex(){
-	return Math.floor(Math.random()*20+1);
+	return Math.floor(Math.random()*20);
 }
 
-function newElements(arr){
+function sortedResponse(arr){
 	var results = [];
 	arr.forEach(function(item){
 		results.push({title: item.snippet.title, src: item.id.videoId});
 	})
-
 	return results;
+}
+
+function renderDOM(arr){
+	var index = randomIndex();
+	var element = document.getElementById('main');
+	element.innerHTML = "<div class = 'row text-center'><div class = 'col-md-12' id='contents'></div></div>";
+	var titleTag  = document.createElement('h3');
+	var titleName = document.createTextNode(arr[index].title);
+	titleTag.appendChild(titleName);
+
+	var videoTag = document.createElement('iframe');
+	videoTag.setAttribute("src", arr[index].src);
+
+	var content = document.getElementById('contents');
+	content.appendChild(titleTag);
+	content.appendChild(videoTag);
 }
 
 $('#test').on('click', function(e){
@@ -26,8 +41,9 @@ $('#test').on('click', function(e){
 
 	request.execute(function(response){
 		var apiResponse = response.result.items;
-		var titleAndSource = newElements(apiResponse);
-		console.log(titleAndSource.length);
+		var titleAndSourceArray = sortedResponse(apiResponse);
+		console.log(titleAndSourceArray.length);
+		renderDOM(titleAndSourceArray);
 		// var result = response.result.items;
 		// var index = randomIndex();
 	
