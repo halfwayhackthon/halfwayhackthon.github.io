@@ -1,8 +1,11 @@
-//Helper Function: generate random index 
+//Helper Function: 
+//generate random index 
 function randomIndex(){
 	return Math.floor(Math.random()*20);
 }
 
+//Helper Function: 
+//sorts API responses into an array objects : [{title: "title", src: "link"}]
 function sortedResponse(arr){
 	var results = [];
 	arr.forEach(function(item){
@@ -10,7 +13,8 @@ function sortedResponse(arr){
 	})
 	return results;
 }
-
+//Helper Function:
+//creates and append elements with randomly selected values of API response.
 function renderDOM(arr){
 	var index = randomIndex();
 	var element = document.getElementById('main');
@@ -47,32 +51,8 @@ document.getElementById('test').addEventListener('click',function(e){
 	})
 })
 
-// $('#test').on('click', function(e){
-// 	e.preventDefault();
-// 	$('.main').empty();
-// 	var request = gapi.client.youtube.search.list({
-// 		part : ' snippet',
-// 		type: 'video',
-// 		q: encodeURIComponent('BigBang Music Video').replace(/%20/g, '+'),
-// 		maxResults: 20,
-// 		order: 'viewCount',
-// 		publishedAfter: '2015-01-01T00:00:00Z'
-// 	});
-
-// 	request.execute(function(response){
-// 		var apiResponse = response.result.items;
-// 		var titleAndSourceArray = sortedResponse(apiResponse);
-// 		console.log(titleAndSourceArray.length);
-// 		renderDOM(titleAndSourceArray);
-// 	})
-// })
-
-
-
-
-//render 'back' button on the DOM:
 //Click Handler for Salad button
-$('#salad').on('click', function(e){
+document.getElementById('salad').addEventListener('click', function(e){
 	e.preventDefault();
 	$('.main').empty();
 
@@ -85,18 +65,15 @@ $('#salad').on('click', function(e){
 		publishedAfter: '2015-01-01T00:00:00Z'
 	});
 	request.execute(function(response){
-		console.log(response);
-		var results = response.result;
-		var index = randomIndex();
-		
-		$('.main').append("<div class = 'row text-center'><div class = 'col-md-12'><h3 class = 'recipeName'></h3><iframe class = 'recipeLink'></iframe></div></div>");
-		$('.recipeName').text('Recipe: ' + results.items[index].snippet.title);
-		$('.recipeLink').attr('src', 'https://www.youtube.com/embed/'+ results.items[index].id.videoId);	
+		var apiResponse = response.result.items;
+		var titleAndSourceArray = sortedResponse(apiResponse);
+		console.log(titleAndSourceArray.length);
+		renderDOM(titleAndSourceArray);	
 	})
 })
 
 //Click Handler for soup Button
-$('#soup').on('click', function(e){
+document.getElementById('soup').addEventListener('click', function(e){
 	e.preventDefault();
 	$('.main').empty();
 	var request = gapi.client.youtube.search.list({
@@ -108,17 +85,15 @@ $('#soup').on('click', function(e){
 		publishedAfter: '2015-01-01T00:00:00Z'
 	});
 	request.execute(function(response){
-		//console.log(response);
-		var results = response.result;
-		var index = randomIndex();
-		$('.main').append("<div class = 'row text-center'><div class = 'col-md-12'><h3 class = 'recipeName'></h3><iframe class = 'recipeLink'></iframe></div></div>");
-		$('.recipeName').text('Recipe: ' + results.items[index].snippet.title);
-		$('.recipeLink').attr('src', 'https://www.youtube.com/embed/'+ results.items[index].id.videoId);	
+		var apiResponse = response.result.items;
+		var titleAndSourceArray = sortedResponse(apiResponse);
+		console.log(titleAndSourceArray.length);
+		renderDOM(titleAndSourceArray);		
 	})
 })
 
 //Click handler for steak button
-$('#steak').on('click', function(e){
+document.getElementById('steak').addEventListener('click', function(e){
 	e.preventDefault();
 	$('.main').empty();
 	var request = gapi.client.youtube.search.list({
@@ -130,17 +105,15 @@ $('#steak').on('click', function(e){
 		publishedAfter: '2015-01-01T00:00:00Z'
 	});
 	request.execute(function(response){
-		//console.log(response);
-		var results = response.result;
-		var index = randomIndex();
-		$('.main').append("<div class = 'row text-center'><div class = 'col-md-12'><h3 class = 'recipeName'></h3><iframe class = 'recipeLink'></iframe></div></div>");
-		$('.recipeName').text('Recipe: ' + results.items[index].snippet.title);
-		$('.recipeLink').attr('src', 'https://www.youtube.com/embed/'+ results.items[index].id.videoId);	
+		var apiResponse = response.result.items;
+		var titleAndSourceArray = sortedResponse(apiResponse);
+		console.log(titleAndSourceArray.length);
+		renderDOM(titleAndSourceArray);	
 	})
 })
 
 //Click handler for chicken button
-$('#chicken').on('click', function(e){
+document.getElementById('chicken').addEventListener('click', function(e){
 	e.preventDefault();
 	$('.main').empty();
 	var request = gapi.client.youtube.search.list({
@@ -152,17 +125,15 @@ $('#chicken').on('click', function(e){
 		publishedAfter: '2015-01-01T00:00:00Z'
 	});
 	request.execute(function(response){
-		//console.log(response);
-		var results = response.result;
-		var index = randomIndex();
-		$('.main').append("<div class = 'row text-center'><div class = 'col-md-12'><h3 class = 'recipeName'></h3><iframe class = 'recipeLink'></iframe></div></div>");
-		$('.recipeName').text('Recipe: ' + results.items[index].snippet.title);
-		$('.recipeLink').attr('src', 'https://www.youtube.com/embed/'+ results.items[index].id.videoId);	
+		var apiResponse = response.result.items;
+		var titleAndSourceArray = sortedResponse(apiResponse);
+		console.log(titleAndSourceArray.length);
+		renderDOM(titleAndSourceArray);		
 	})
 })
 
 //Click handler for seafood button
-$('#seafood').on('click', function(e){
+document.getElementById('seafood').addEventListener('click', function(e){
 	e.preventDefault();
 	$('.main').empty();
 	var request = gapi.client.youtube.search.list({
@@ -174,17 +145,15 @@ $('#seafood').on('click', function(e){
 		publishedAfter: '2015-01-01T00:00:00Z'
 	});
 	request.execute(function(response){
-		//console.log(response);
-		var results = response.result;
-		var index = randomIndex();
-		$('.main').append("<div class = 'row text-center'><div class = 'col-md-12'><h3 class = 'recipeName'></h3><iframe class = 'recipeLink'></iframe></div></div>");
-		$('.recipeName').text('Recipe: ' + results.items[index].snippet.title);
-		$('.recipeLink').attr('src', 'https://www.youtube.com/embed/'+ results.items[index].id.videoId);	
+		var apiResponse = response.result.items;
+		var titleAndSourceArray = sortedResponse(apiResponse);
+		console.log(titleAndSourceArray.length);
+		renderDOM(titleAndSourceArray);		
 	})
 })
 
 //Click handler for dessert button
-$('#dessert').on('click', function(e){
+document.getElementById('dessert').addEventListener('click', function(e){
 	e.preventDefault();
 	$('.main').empty();
 	var request = gapi.client.youtube.search.list({
@@ -196,12 +165,10 @@ $('#dessert').on('click', function(e){
 		publishedAfter: '2015-01-01T00:00:00Z'
 	});
 	request.execute(function(response){
-		//console.log(response);
-		var results = response.result;
-		var index = randomIndex();
-		$('.main').append("<div class = 'row text-center'><div class = 'col-md-12'><h3 class = 'recipeName'></h3><iframe class = 'recipeLink'></iframe></div></div>");
-		$('.recipeName').text('Recipe: ' + results.items[index].snippet.title);
-		$('.recipeLink').attr('src', 'https://www.youtube.com/embed/'+ results.items[index].id.videoId);	
+		var apiResponse = response.result.items;
+		var titleAndSourceArray = sortedResponse(apiResponse);
+		console.log(titleAndSourceArray.length);
+		renderDOM(titleAndSourceArray);		
 	})
 })
 
