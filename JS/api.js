@@ -37,27 +37,112 @@ function backButton(){
 	var back = document.getElementById('contents');
 	back.insertAdjacentHTML('beforeend', "<div class ='row text-center'><a class='btn btn-default' role = 'button' href='index.html'>BACK</a><div>");
 }
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
 
-// document.getElementById('test').addEventListener('click',function(e){
-// 	e.preventDefault();
-// 	$('.main').empty();
-// 	var request = gapi.client.youtube.search.list({
-// 		part : ' snippet',
-// 		type: 'video',
-// 		q: encodeURIComponent('BigBang Music Video').replace(/%20/g, '+'),
-// 		maxResults: 20,
-// 		order: 'viewCount',
-// 		publishedAfter: '2015-01-01T00:00:00Z'
-// 	});
 
-// 	request.execute(function(response){
-// 		var apiResponse = response.result.items;
-// 		var titleAndSourceArray = sortedResponse(apiResponse);
-// 		renderDOM(titleAndSourceArray);
-// 		backButton();
-// 	})
-// })
 
+// listTitle();
+// addItemList();		
+// renderAddButton();
+// removeButton();
+
+
+function listTitle(){
+	var element = document.getElementById('contents');
+	element.insertAdjacentHTML('beforeend',"<hr><div class = 'row text-left'><div class = 'col-md-12'><h3>Note your needed ingredients below:</h3></div></div>");
+}
+
+//////////////////////change MAIN to CONTENT//////////////////
+function renderAddButton(){
+	var add = document.getElementById('contents');
+	add.insertAdjacentHTML('beforeend', "<div class ='row text-center'><div class='col-md-6 col-md-offset-3'><div class='input-group'><input type='text' class='form-control' placeholder='Enter Item...' id = 'listItem'><span class='input-group-btn'><button class='btn btn-default' type='button' id='add'>ADD</button></span></div></div></div>");
+}
+
+////////////////////////////////////////////////////////////
+function addItemList(){
+	var itemList = document.getElementById('contents');
+	itemList.insertAdjacentHTML('beforeend', "<div class = 'row text-left'><div class='col-md-6 col-md-offset-3'><ul id = 'list'></ul></div></div>")
+}
+
+
+////////////////////////////////////////////////////////////
+function removeButton(){
+	var remove = document.getElementById('contents');
+	remove.insertAdjacentHTML('beforeend',"<div class = 'row text-center'><button class='btn btn-default' type='button' id='remove'>Remove Selected Items</button></div>");
+}
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+var count = 0;
+
+var userText = document.getElementById('listItem');
+	userText.focus();
+
+var addButton = document.getElementById('add');
+addButton.onclick = function(){
+
+	var text = userText.value;
+
+	if(text.length === 0 || text === ' '){
+		return false;
+	}
+
+	addToList(document.getElementById('list'), text);
+}
+
+
+function addToList(list, text){
+	count++;
+	var eachItem = document.createElement('li');
+	var checkBox = document.createElement('input');
+	checkBox.type = 'checkbox';
+	checkBox.id = "box" + count;
+	checkBox.onclick = updateList;
+
+	var span = document.createElement('span');
+	span.id = "item" + count;
+	span.innerText = text;
+
+	
+	eachItem.appendChild(checkBox);
+	eachItem.appendChild(span);
+	
+	list.appendChild(eachItem);	
+};
+
+
+function updateList(){
+	var idNum = this.id.replace("box","");
+	var listItem = document.getElementById("item" + idNum);
+	if(this.checked){
+		listItem.style.textDecoration = "line-through";
+	}else{
+		listItem.style.textDecoration = "none";
+	}
+	
+}
+
+var remove = document.getElementById('remove');
+remove.onclick = function(){
+	var list = document.getElementById('list'),
+		items = Array.prototype.slice.call(list.childNodes),
+		item;
+		while(item = items.pop()){
+			if(item.firstChild&&item.firstChild.checked){
+				list.removeChild(item);
+			}
+		}
+}
+
+
+
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
 //Click Handler for Salad button
 document.getElementById('salad').addEventListener('click', function(e){
 	e.preventDefault();
@@ -76,6 +161,11 @@ document.getElementById('salad').addEventListener('click', function(e){
 		var titleAndSourceArray = sortedResponse(apiResponse);
 		console.log(titleAndSourceArray.length);
 		renderDOM(titleAndSourceArray);	
+
+		listTitle();
+		addItemList();
+		renderAddButton();
+		removeButton();
 		backButton();
 	})
 })
@@ -187,3 +277,32 @@ function init(){
 		//api is ready
 	})
 }
+
+
+
+
+
+
+// document.getElementById('test').addEventListener('click',function(e){
+// 	e.preventDefault();
+// 	$('.main').empty();
+// 	var request = gapi.client.youtube.search.list({
+// 		part : ' snippet',
+// 		type: 'video',
+// 		q: encodeURIComponent('BigBang Music Video').replace(/%20/g, '+'),
+// 		maxResults: 20,
+// 		order: 'viewCount',
+// 		publishedAfter: '2015-01-01T00:00:00Z'
+// 	});
+
+// 	request.execute(function(response){
+// 		var apiResponse = response.result.items;
+// 		var titleAndSourceArray = sortedResponse(apiResponse);
+// 		renderDOM(titleAndSourceArray);
+// 		backButton();
+// 	})
+// })
+
+
+
+
