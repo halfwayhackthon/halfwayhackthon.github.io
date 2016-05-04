@@ -38,6 +38,103 @@ function backButton(){
 	back.insertAdjacentHTML('beforeend', "<div class ='row text-center'><a class='btn btn-default' role = 'button' href='index.html'>BACK</a><div>");
 }
 
+
+
+listTitle();
+renderAddButton();
+addItemList();	
+removeButton();
+
+//insert Ingredient List Title
+function listTitle(){
+	var element = document.getElementById('itemList');
+	element.insertAdjacentHTML('beforeend',"<hr><div class = 'row text-left'><div class = 'col-md-12'><h3>Note your needed ingredients below:</h3></div></div>");
+}
+
+//insert add Button 
+function renderAddButton(){
+	var add = document.getElementById('itemList');
+	add.insertAdjacentHTML('beforeend', "<div class ='row text-center'><div class='col-md-6 col-md-offset-3'><div class='input-group'><input type='text' class='form-control' placeholder='Enter Item...' id = 'listItem'><span class='input-group-btn'><button class='btn btn-default' type='button' id='add'>ADD</button></span></div></div></div>");
+}
+
+//insert empty unordered list
+function addItemList(){
+	var itemList = document.getElementById('itemList');
+	itemList.insertAdjacentHTML('beforeend', "<div class = 'row text-left'><div class='col-md-6 col-md-offset-3'><ul id = 'list'></ul></div></div>")
+}
+
+
+//insert remove button
+function removeButton(){
+	var remove = document.getElementById('itemList');
+	remove.insertAdjacentHTML('beforeend',"<div class = 'row text-center'><button class='btn btn-default' type='button' id='remove'>Remove Selected Items</button></div>");
+}
+
+//Manipulate add button to take user input on click
+var count = 0;
+
+var userText = document.getElementById('listItem');
+	userText.focus();
+
+var addButton = document.getElementById('add');
+addButton.onclick = function(){
+
+	var text = userText.value;
+
+	if(text.length === 0 || text === ' '){
+		return false;
+	}
+
+	addToList(document.getElementById('list'), text);
+}
+
+//appends li to previous ul
+//add checkbox and assign values to li
+
+function addToList(list, text){
+	count++;
+	var eachItem = document.createElement('li');
+	var checkBox = document.createElement('input');
+	checkBox.type = 'checkbox';
+	checkBox.id = "box" + count;
+	checkBox.onclick = strikethrough;
+
+	var span = document.createElement('span');
+	span.id = "item" + count;
+	span.innerText = text;
+
+	
+	eachItem.appendChild(checkBox);
+	eachItem.appendChild(span);
+	
+	list.appendChild(eachItem);	
+};
+
+//create strike through effect when checkbox is checked.
+function strikethrough(){
+	var idNum = this.id.replace("box","");
+	var listItem = document.getElementById("item" + idNum);
+	if(this.checked){
+		listItem.style.textDecoration = "line-through";
+	}else{
+		listItem.style.textDecoration = "none";
+	}
+	
+}
+
+//manipulate remove button so it will remove selected checkbox on click.
+var remove = document.getElementById('remove');
+remove.onclick = function(){
+	var list = document.getElementById('list'),
+		items = Array.prototype.slice.call(list.childNodes),
+		item;
+		while(item = items.pop()){
+			if(item.firstChild&&item.firstChild.checked){
+				list.removeChild(item);
+			}
+		}
+}
+
 //Click Handler for Salad button
 document.getElementById('salad').addEventListener('click', function(e){
 	e.preventDefault();
@@ -173,117 +270,6 @@ function init(){
 	})
 }
 
-////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////
-
-
-
-// listTitle();
-// addItemList();		
-// renderAddButton();
-// removeButton();
-
-
-function listTitle(){
-	var element = document.getElementById('contents');
-	element.insertAdjacentHTML('beforeend',"<hr><div class = 'row text-left'><div class = 'col-md-12'><h3>Note your needed ingredients below:</h3></div></div>");
-}
-
-//////////////////////change MAIN to CONTENT//////////////////
-function renderAddButton(){
-	var add = document.getElementById('contents');
-	add.insertAdjacentHTML('beforeend', "<div class ='row text-center'><div class='col-md-6 col-md-offset-3'><div class='input-group'><input type='text' class='form-control' placeholder='Enter Item...' id = 'listItem'><span class='input-group-btn'><button class='btn btn-default' type='button' id='add'>ADD</button></span></div></div></div>");
-}
-
-////////////////////////////////////////////////////////////
-function addItemList(){
-	var itemList = document.getElementById('contents');
-	itemList.insertAdjacentHTML('beforeend', "<div class = 'row text-left'><div class='col-md-6 col-md-offset-3'><ul id = 'list'></ul></div></div>")
-}
-
-
-////////////////////////////////////////////////////////////
-function removeButton(){
-	var remove = document.getElementById('contents');
-	remove.insertAdjacentHTML('beforeend',"<div class = 'row text-center'><button class='btn btn-default' type='button' id='remove'>Remove Selected Items</button></div>");
-}
-
-////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////
-
-var count = 0;
-
-
-
-
-var addButton = document.getElementById('add');
-addButton.onclick = function(){
-	var userText = document.getElementById('listItem');
-	var text = userText.value;
-
-	if(text.length === 0 || text === ' '){
-		return false;
-	}
-
-	addToList(document.getElementById('list'), text);
-}
-
-
-function addToList(list, text){
-	count++;
-	var eachItem = document.createElement('li');
-	var checkBox = document.createElement('input');
-	checkBox.type = 'checkbox';
-	checkBox.id = "box" + count;
-	checkBox.onclick = updateList;
-
-	var span = document.createElement('span');
-	span.id = "item" + count;
-	span.innerText = text;
-
-	
-	eachItem.appendChild(checkBox);
-	eachItem.appendChild(span);
-	
-	list.appendChild(eachItem);	
-};
-
-
-function updateList(){
-	var idNum = this.id.replace("box","");
-	var listItem = document.getElementById("item" + idNum);
-	if(this.checked){
-		listItem.style.textDecoration = "line-through";
-	}else{
-		listItem.style.textDecoration = "none";
-	}
-	
-}
-
-var remove = document.getElementById('remove');
-remove.onclick = function(){
-	var list = document.getElementById('list'),
-		items = Array.prototype.slice.call(list.childNodes),
-		item;
-		while(item = items.pop()){
-			if(item.firstChild&&item.firstChild.checked){
-				list.removeChild(item);
-			}
-		}
-}
-
-
-
-////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////
-
-
-
-
-
 // document.getElementById('test').addEventListener('click',function(e){
 // 	e.preventDefault();
 // 	$('.main').empty();
@@ -303,7 +289,3 @@ remove.onclick = function(){
 // 		backButton();
 // 	})
 // })
-
-
-
-
