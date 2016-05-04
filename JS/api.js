@@ -68,7 +68,7 @@ function addItemList(){
 //insert remove button
 function removeButton(){
 	var remove = document.getElementById('itemList');
-	remove.insertAdjacentHTML('beforeend',"<div class = 'row text-center'><button class='btn btn-default' type='button' id='remove'>Remove Selected Items</button></div>");
+	remove.insertAdjacentHTML('beforeend',"<div class = 'row text-center'><button class='btn btn-default' type='button' id='remove'>Remove Checked</button><button class='btn btn-default' type='button' id='removeAll'>Remove All</button></div>");
 }
 
 //Manipulate add button to take user input on click
@@ -135,7 +135,11 @@ remove.onclick = function(){
 			}
 		}
 }
-
+//
+var removeAll = document.getElementById('removeAll');
+removeAll.onclick = function(){
+	$('#list').empty();
+}
 //Click Handler for Salad button
 document.getElementById('salad').addEventListener('click', function(e){
 	e.preventDefault();

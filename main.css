@@ -39,5 +39,9 @@ ul{
 
 li span{
 
-	padding-left : 10px;
+	padding-left : 15px;
+}
+
+#remove {
+	margin-right: 15px;
 }
