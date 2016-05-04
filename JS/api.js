@@ -40,17 +40,10 @@ function backButton(){
 }
 
 
-
-listTitle();
 renderAddButton();
 addItemList();	
 removeButton();
 
-//insert Ingredient List Title
-function listTitle(){
-	var element = document.getElementById('itemList');
-	element.insertAdjacentHTML('beforeend',"<hr><div class = 'row text-center'><div class = 'col-md-12'><h3>Note your needed ingredients below:</h3></div></div>");
-}
 
 //insert add Button 
 function renderAddButton(){
@@ -135,11 +128,12 @@ remove.onclick = function(){
 			}
 		}
 }
-//
+//manipulate removeAll button to clear all lis.
 var removeAll = document.getElementById('removeAll');
 removeAll.onclick = function(){
 	$('#list').empty();
 }
+
 //Click Handler for Salad button
 document.getElementById('salad').addEventListener('click', function(e){
 	e.preventDefault();
