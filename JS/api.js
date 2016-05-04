@@ -79,12 +79,12 @@ function removeButton(){
 
 var count = 0;
 
-var userText = document.getElementById('listItem');
-	userText.focus();
+
+
 
 var addButton = document.getElementById('add');
 addButton.onclick = function(){
-
+	var userText = document.getElementById('listItem');
 	var text = userText.value;
 
 	if(text.length === 0 || text === ' '){
