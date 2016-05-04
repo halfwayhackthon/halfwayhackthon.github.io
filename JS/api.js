@@ -48,7 +48,7 @@ removeButton();
 //insert Ingredient List Title
 function listTitle(){
 	var element = document.getElementById('itemList');
-	element.insertAdjacentHTML('beforeend',"<hr><div class = 'row text-left'><div class = 'col-md-12'><h3>Note your needed ingredients below:</h3></div></div>");
+	element.insertAdjacentHTML('beforeend',"<hr><div class = 'row text-center'><div class = 'col-md-12'><h3>Note your needed ingredients below:</h3></div></div>");
 }
 
 //insert add Button 
