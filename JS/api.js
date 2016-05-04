@@ -1,7 +1,8 @@
 //Helper Function: 
-//generate random index 
+//generate random index
+var recipeSearched = 50; 
 function randomIndex(){
-	return Math.floor(Math.random()*30);
+	return Math.floor(Math.random()*recipeSearched);
 }
 
 //Helper Function: 
@@ -144,7 +145,7 @@ document.getElementById('salad').addEventListener('click', function(e){
 		part : ' snippet',
 		type: 'video',
 		q: encodeURIComponent('salad recipe').replace(/%20/g, '+'),
-		maxResults: 30,
+		maxResults: recipeSearched,
 		order: 'viewCount',
 		publishedAfter: '2015-01-01T00:00:00Z'
 	});
@@ -153,11 +154,6 @@ document.getElementById('salad').addEventListener('click', function(e){
 		var titleAndSourceArray = sortedResponse(apiResponse);
 		console.log(titleAndSourceArray.length);
 		renderDOM(titleAndSourceArray);	
-
-		listTitle();
-		addItemList();
-		renderAddButton();
-		removeButton();
 		backButton();
 	})
 })
@@ -170,7 +166,7 @@ document.getElementById('soup').addEventListener('click', function(e){
 		part : ' snippet',
 		type: 'video',
 		q: encodeURIComponent('soup recipe').replace(/%20/g, '+'),
-		maxResults: 30,
+		maxResults: recipeSearched,
 		order: 'viewCount',
 		publishedAfter: '2015-01-01T00:00:00Z'
 	});
@@ -191,7 +187,7 @@ document.getElementById('steak').addEventListener('click', function(e){
 		part : ' snippet',
 		type: 'video',
 		q: encodeURIComponent('steak recipe').replace(/%20/g, '+'),
-		maxResults: 30,
+		maxResults: recipeSearched,
 		order: 'viewCount',
 		publishedAfter: '2015-01-01T00:00:00Z'
 	});
@@ -211,7 +207,7 @@ document.getElementById('chicken').addEventListener('click', function(e){
 		part : ' snippet',
 		type: 'video',
 		q: encodeURIComponent('chicken recipe').replace(/%20/g, '+'),
-		maxResults: 30,
+		maxResults: recipeSearched,
 		order: 'viewCount',
 		publishedAfter: '2015-01-01T00:00:00Z'
 	});
@@ -231,7 +227,7 @@ document.getElementById('seafood').addEventListener('click', function(e){
 		part : ' snippet',
 		type: 'video',
 		q: encodeURIComponent('seafood recipe').replace(/%20/g, '+'),
-		maxResults: 30,
+		maxResults: recipeSearched,
 		order: 'viewCount',
 		publishedAfter: '2015-01-01T00:00:00Z'
 	});
@@ -251,7 +247,7 @@ document.getElementById('dessert').addEventListener('click', function(e){
 		part : ' snippet',
 		type: 'video',
 		q: encodeURIComponent('easy dessert recipe').replace(/%20/g, '+'),
-		maxResults: 30,
+		maxResults: recipeSearched,
 		order: 'viewCount',
 		publishedAfter: '2015-01-01T00:00:00Z'
 	});
