@@ -64,12 +64,24 @@ function removeButton(){
 	remove.insertAdjacentHTML('beforeend',"<div class = 'row text-center'><button class='btn btn-default' type='button' id='remove'>Remove Checked</button><button class='btn btn-default' type='button' id='removeAll'>Remove All</button></div>");
 }
 
-//Manipulate add button to take user input on click
+//Let user add to grocery list by pressing Enter
 var count = 0;
 
 var userText = document.getElementById('listItem');
 	userText.focus();
+	userText.onkeyup = function(event){
+		if(event.which == 13){
+			var text = userText.value;
+			if(text.length === 0 || text === ' '){
+				return false;
+			}
+			addToList(document.getElementById('list'),text);
+			userText.focus();
+			userText.select();
+		}
+	}
 
+//Manipulate add button to take user input on click
 var addButton = document.getElementById('add');
 addButton.onclick = function(){
 
@@ -80,7 +92,10 @@ addButton.onclick = function(){
 	}
 
 	addToList(document.getElementById('list'), text);
+	userText.focus();
+	userText.select();
 }
+
 
 //appends li to previous ul
 //add checkbox and assign values to li
@@ -125,6 +140,8 @@ remove.onclick = function(){
 		while(item = items.pop()){
 			if(item.firstChild&&item.firstChild.checked){
 				list.removeChild(item);
+				userText.focus();
+				userText.select();
 			}
 		}
 }
@@ -132,6 +149,8 @@ remove.onclick = function(){
 var removeAll = document.getElementById('removeAll');
 removeAll.onclick = function(){
 	$('#list').empty();
+	userText.focus();
+	userText.select();
 }
 
 //Click Handler for Salad button
