@@ -154,14 +154,27 @@ removeAll.onclick = function(){
 }
 
 //Click Handler for Salad button
-document.getElementById('salad').addEventListener('click', function(e){
+$(document).on('click', '#salad, #soup, #steak, #chicken, #seafood, #dessert', function(e){
+	var searchTerms = ['salad recipe','soup recipe','steak recipe', 'chicken recipe', 'seafood recipe', 'dessert recipe'];
+	var searchThis = '';
+	if(this.id === 'salad'){
+		searchThis = searchTerms[0];
+	}else if(this.id === 'soup'){
+		searchThis = searchTerms[1];
+	}else if(this.id === 'steak'){
+		searchThis = searchTerms[2];
+	}else if(this.id === 'chicken'){
+		searchThis = searchTerms[3];
+	}else if(this.id === 'seafood'){
+		searchThis = searchTerms[4];
+	}else if(this.id === 'dessert'){
+		searchThis = searchTerms[5];
+	}
 	e.preventDefault();
-	$('.main').empty();
-
 	var request = gapi.client.youtube.search.list({
 		part : ' snippet',
 		type: 'video',
-		q: encodeURIComponent('salad recipe').replace(/%20/g, '+'),
+		q: encodeURIComponent(searchThis).replace(/%20/g, '+'),
 		maxResults: recipeSearched,
 		order: 'viewCount',
 		publishedAfter: '2015-01-01T00:00:00Z'
@@ -173,108 +186,130 @@ document.getElementById('salad').addEventListener('click', function(e){
 		renderDOM(titleAndSourceArray);	
 		backButton();
 	})
+
 })
 
-//Click Handler for soup Button
-document.getElementById('soup').addEventListener('click', function(e){
-	e.preventDefault();
-	$('.main').empty();
-	var request = gapi.client.youtube.search.list({
-		part : ' snippet',
-		type: 'video',
-		q: encodeURIComponent('soup recipe').replace(/%20/g, '+'),
-		maxResults: recipeSearched,
-		order: 'viewCount',
-		publishedAfter: '2015-01-01T00:00:00Z'
-	});
-	request.execute(function(response){
-		var apiResponse = response.result.items;
-		var titleAndSourceArray = sortedResponse(apiResponse);
-		console.log(titleAndSourceArray.length);
-		renderDOM(titleAndSourceArray);	
-		backButton();	
-	})
-})
+// document.getElementById('salad').addEventListener('click', function(e){
+// 	e.preventDefault();
+// 	$('.main').empty();
+
+// 	var request = gapi.client.youtube.search.list({
+// 		part : ' snippet',
+// 		type: 'video',
+// 		q: encodeURIComponent('salad recipe').replace(/%20/g, '+'),
+// 		maxResults: recipeSearched,
+// 		order: 'viewCount',
+// 		publishedAfter: '2015-01-01T00:00:00Z'
+// 	});
+// 	request.execute(function(response){
+// 		var apiResponse = response.result.items;
+// 		var titleAndSourceArray = sortedResponse(apiResponse);
+// 		console.log(titleAndSourceArray.length);
+// 		renderDOM(titleAndSourceArray);	
+// 		backButton();
+// 	})
+// })
+
+// //Click Handler for soup Button
+// document.getElementById('soup').addEventListener('click', function(e){
+// 	e.preventDefault();
+// 	$('.main').empty();
+// 	var request = gapi.client.youtube.search.list({
+// 		part : ' snippet',
+// 		type: 'video',
+// 		q: encodeURIComponent('soup recipe').replace(/%20/g, '+'),
+// 		maxResults: recipeSearched,
+// 		order: 'viewCount',
+// 		publishedAfter: '2015-01-01T00:00:00Z'
+// 	});
+// 	request.execute(function(response){
+// 		var apiResponse = response.result.items;
+// 		var titleAndSourceArray = sortedResponse(apiResponse);
+// 		console.log(titleAndSourceArray.length);
+// 		renderDOM(titleAndSourceArray);	
+// 		backButton();	
+// 	})
+// })
 
 //Click handler for steak button
-document.getElementById('steak').addEventListener('click', function(e){
-	e.preventDefault();
-	$('.main').empty();
-	var request = gapi.client.youtube.search.list({
-		part : ' snippet',
-		type: 'video',
-		q: encodeURIComponent('steak recipe').replace(/%20/g, '+'),
-		maxResults: recipeSearched,
-		order: 'viewCount',
-		publishedAfter: '2015-01-01T00:00:00Z'
-	});
-	request.execute(function(response){
-		var apiResponse = response.result.items;
-		var titleAndSourceArray = sortedResponse(apiResponse);
-		renderDOM(titleAndSourceArray);	
-		backButton();
-	})
-})
+// document.getElementById('steak').addEventListener('click', function(e){
+// 	e.preventDefault();
+// 	$('.main').empty();
+// 	var request = gapi.client.youtube.search.list({
+// 		part : ' snippet',
+// 		type: 'video',
+// 		q: encodeURIComponent('steak recipe').replace(/%20/g, '+'),
+// 		maxResults: recipeSearched,
+// 		order: 'viewCount',
+// 		publishedAfter: '2015-01-01T00:00:00Z'
+// 	});
+// 	request.execute(function(response){
+// 		var apiResponse = response.result.items;
+// 		var titleAndSourceArray = sortedResponse(apiResponse);
+// 		renderDOM(titleAndSourceArray);	
+// 		backButton();
+// 	})
+// })
 
-//Click handler for chicken button
-document.getElementById('chicken').addEventListener('click', function(e){
-	e.preventDefault();
-	$('.main').empty();
-	var request = gapi.client.youtube.search.list({
-		part : ' snippet',
-		type: 'video',
-		q: encodeURIComponent('chicken recipe').replace(/%20/g, '+'),
-		maxResults: recipeSearched,
-		order: 'viewCount',
-		publishedAfter: '2015-01-01T00:00:00Z'
-	});
-	request.execute(function(response){
-		var apiResponse = response.result.items;
-		var titleAndSourceArray = sortedResponse(apiResponse);
-		renderDOM(titleAndSourceArray);	
-		backButton();	
-	})
-})
+// //Click handler for chicken button
+// document.getElementById('chicken').addEventListener('click', function(e){
+// 	e.preventDefault();
+// 	$('.main').empty();
+// 	var request = gapi.client.youtube.search.list({
+// 		part : ' snippet',
+// 		type: 'video',
+// 		q: encodeURIComponent('chicken recipe').replace(/%20/g, '+'),
+// 		maxResults: recipeSearched,
+// 		order: 'viewCount',
+// 		publishedAfter: '2015-01-01T00:00:00Z'
+// 	});
+// 	request.execute(function(response){
+// 		var apiResponse = response.result.items;
+// 		var titleAndSourceArray = sortedResponse(apiResponse);
+// 		renderDOM(titleAndSourceArray);	
+// 		backButton();	
+// 	})
+// })
 
-//Click handler for seafood button
-document.getElementById('seafood').addEventListener('click', function(e){
-	e.preventDefault();
-	$('.main').empty();
-	var request = gapi.client.youtube.search.list({
-		part : ' snippet',
-		type: 'video',
-		q: encodeURIComponent('seafood recipe').replace(/%20/g, '+'),
-		maxResults: recipeSearched,
-		order: 'viewCount',
-		publishedAfter: '2015-01-01T00:00:00Z'
-	});
-	request.execute(function(response){
-		var apiResponse = response.result.items;
-		var titleAndSourceArray = sortedResponse(apiResponse);
-		renderDOM(titleAndSourceArray);	
-		backButton();	
-	})
-})
+// //Click handler for seafood button
+// document.getElementById('seafood').addEventListener('click', function(e){
+// 	e.preventDefault();
+// 	$('.main').empty();
+// 	var request = gapi.client.youtube.search.list({
+// 		part : ' snippet',
+// 		type: 'video',
+// 		q: encodeURIComponent('seafood recipe').replace(/%20/g, '+'),
+// 		maxResults: recipeSearched,
+// 		order: 'viewCount',
+// 		publishedAfter: '2015-01-01T00:00:00Z'
+// 	});
+// 	request.execute(function(response){
+// 		var apiResponse = response.result.items;
+// 		var titleAndSourceArray = sortedResponse(apiResponse);
+// 		renderDOM(titleAndSourceArray);	
+// 		backButton();	
+// 	})
+// })
 
-//Click handler for dessert button
-document.getElementById('dessert').addEventListener('click', function(e){
-	e.preventDefault();
-	$('.main').empty();
-	var request = gapi.client.youtube.search.list({
-		part : ' snippet',
-		type: 'video',
-		q: encodeURIComponent('easy dessert recipe').replace(/%20/g, '+'),
-		maxResults: recipeSearched,
-		order: 'viewCount',
-		publishedAfter: '2015-01-01T00:00:00Z'
-	});
-	request.execute(function(response){
-		var apiResponse = response.result.items;
-		var titleAndSourceArray = sortedResponse(apiResponse);
-		renderDOM(titleAndSourceArray);	
-		backButton();	
-	})
-})
+// //Click handler for dessert button
+// document.getElementById('dessert').addEventListener('click', function(e){
+// 	e.preventDefault();
+// 	$('.main').empty();
+// 	var request = gapi.client.youtube.search.list({
+// 		part : ' snippet',
+// 		type: 'video',
+// 		q: encodeURIComponent('easy dessert recipe').replace(/%20/g, '+'),
+// 		maxResults: recipeSearched,
+// 		order: 'viewCount',
+// 		publishedAfter: '2015-01-01T00:00:00Z'
+// 	});
+// 	request.execute(function(response){
+// 		var apiResponse = response.result.items;
+// 		var titleAndSourceArray = sortedResponse(apiResponse);
+// 		renderDOM(titleAndSourceArray);	
+// 		backButton();	
+// 	})
+// })
 
 function init(){
 	gapi.client.setApiKey('AIzaSyDgCqI74Acb4UY7GPhZ3-Sz8jal_F2OwKE');
