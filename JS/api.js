@@ -36,11 +36,7 @@ function renderDOM(arr){
 // inserts a back button that takes user back to main page.
 function backButton(){
 	var back = document.getElementById('contents');
-	back.insertAdjacentHTML('beforeend', "<div class ='row text-center' id ='back'><a class='btn btn-default' role = 'button' href='index.html'>BACK</a><div>");
-	$('#back').on('click',function(e){
-		e.preventDefault();
-		window.history.back();
-	})
+	back.insertAdjacentHTML('beforeend', "<div class ='row text-center'><a class='btn btn-default' role = 'button' href='index.html'>BACK</a><div>");
 }
 
 
