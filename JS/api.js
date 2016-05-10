@@ -36,7 +36,11 @@ function renderDOM(arr){
 // inserts a back button that takes user back to main page.
 function backButton(){
 	var back = document.getElementById('contents');
-	back.insertAdjacentHTML('beforeend', "<div class ='row text-center'><a class='btn btn-default' role = 'button' href='index.html'>BACK</a><div>");
+	back.insertAdjacentHTML('beforeend', "<div class ='row text-center' id ='back'><a class='btn btn-default' role = 'button' href='index.html'>BACK</a><div>");
+	$('#back').on('click',function(e){
+		e.preventDefault();
+		window.history.back();
+	})
 }
 
 
@@ -153,7 +157,7 @@ removeAll.onclick = function(){
 	userText.select();
 }
 
-//Click Handler for Salad button
+//Click Handler for all buttons
 $(document).on('click', '#salad, #soup, #steak, #chicken, #seafood, #dessert', function(e){
 	var searchTerms = ['salad recipe','soup recipe','steak recipe', 'chicken recipe', 'seafood recipe', 'dessert recipe'];
 	var searchThis = '';
@@ -188,6 +192,13 @@ $(document).on('click', '#salad, #soup, #steak, #chicken, #seafood, #dessert', f
 	})
 
 })
+
+function init(){
+	gapi.client.setApiKey('AIzaSyDgCqI74Acb4UY7GPhZ3-Sz8jal_F2OwKE');
+	gapi.client.load('youtube', 'v3', function(){
+		//api is ready
+	})
+}
 
 // document.getElementById('salad').addEventListener('click', function(e){
 // 	e.preventDefault();
@@ -308,32 +319,5 @@ $(document).on('click', '#salad, #soup, #steak, #chicken, #seafood, #dessert', f
 // 		var titleAndSourceArray = sortedResponse(apiResponse);
 // 		renderDOM(titleAndSourceArray);	
 // 		backButton();	
-// 	})
-// })
-
-function init(){
-	gapi.client.setApiKey('AIzaSyDgCqI74Acb4UY7GPhZ3-Sz8jal_F2OwKE');
-	gapi.client.load('youtube', 'v3', function(){
-		//api is ready
-	})
-}
-
-// document.getElementById('test').addEventListener('click',function(e){
-// 	e.preventDefault();
-// 	$('.main').empty();
-// 	var request = gapi.client.youtube.search.list({
-// 		part : ' snippet',
-// 		type: 'video',
-// 		q: encodeURIComponent('BigBang Music Video').replace(/%20/g, '+'),
-// 		maxResults: 20,
-// 		order: 'viewCount',
-// 		publishedAfter: '2015-01-01T00:00:00Z'
-// 	});
-
-// 	request.execute(function(response){
-// 		var apiResponse = response.result.items;
-// 		var titleAndSourceArray = sortedResponse(apiResponse);
-// 		renderDOM(titleAndSourceArray);
-// 		backButton();
 // 	})
 // })
