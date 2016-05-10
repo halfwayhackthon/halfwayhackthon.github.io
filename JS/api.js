@@ -35,10 +35,13 @@ function renderDOM(arr){
 //Helper Function:
 // inserts a back button that takes user back to main page.
 function backButton(){
-	var back = document.getElementById('contents');
-	back.insertAdjacentHTML('beforeend', "<div class ='row text-center'><a class='btn btn-default' role = 'button' href='index.html'>BACK</a><div>");
+	var back = document.getElementById('main');
+	back.insertAdjacentHTML('beforeend', "<div class ='row text-center' id='back'><span class='btn btn-default' role = 'button'>BACK</span><div>");
+	$('#back').on('click',function(){
+		$('#main').empty();
+		back.insertAdjacentHTML('beforeend', "<div class = 'main' id = 'main'><div class='row text-center'><div class = 'col-md-12'><h1>Welcome!</h1><p class = 'lead'>Never waste time deciding what to cook again</p></div></div><div class='row text-center'><button type='button' class='btn btn-success main' id='salad'>Salad</button><button type='button' class='btn btn-info main' id='soup'>Soup</button><button type='button' class='btn btn-danger main' id='steak'>Steak</button><button type='button' class='btn btn-default main' id='chicken'>Chicken</button><button type='button' class='btn btn-primary main' id='seafood'>Seafood</button><button type='button' class='btn btn-warning main' id='dessert'>Dessert</button></div></div>")
+	});
 }
-
 
 renderAddButton();
 addItemList();	
